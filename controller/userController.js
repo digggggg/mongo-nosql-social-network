@@ -11,7 +11,7 @@ const usersControllers = {
 getAllUsers(req, res) {
     User
     .find({})
-    .then((data) => res.json(data))
+    .then((data) => {res.json(data)})
 },
 
 getUserById(req, res) {
@@ -21,15 +21,15 @@ getUserById(req, res) {
         path: "friends"
     })
     .populate({
-        path: "thoughts"
+        path: "thought"
     })
-    .then((data) => res.json(data))
+    .then((data) => {res.json(data)})
 },
 
 createUser(req, res) {
     User
     .create(req.body)
-    .then((data) => res.json(data))
+    .then((data) => {res.json(data)})
 },
 
 updateUser(req, res) {
@@ -38,13 +38,13 @@ updateUser(req, res) {
         new: true,
         runValidators: true
     })
-    .then((data) => res.json(data))
+    .then((data) => {res.json(data)})
 },
 
 deleteUser(req, res){
     User
     .findOneAndDelete({_id: req.params.userId})
-    .then((data) => res.json(data))
+    .then((data) => {res.json(data)})
 }
 }
 
